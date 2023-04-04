@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
@@ -12,6 +13,8 @@ import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -22,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.jetpack_compose_ssan_1.ui.theme.Jetpackcomposessan1Theme
 import com.example.jetpack_compose_ssan_1.ui.theme.Typography
 
@@ -30,30 +34,29 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             Jetpackcomposessan1Theme {
-                Row(
-                    modifier = Modifier
-                        .height(500.dp)
-                        .width(500.dp)
-                        .background(Color.LightGray),
-                    horizontalArrangement = Arrangement.Start,
-                ) {
-                    CustomItem(weight = 3f, color = MaterialTheme.colorScheme.secondary)
-                    CustomItem(weight = 1f)
-                }
+
             }
         }
     }
 }
 
 @Composable
-fun RowScope.CustomItem(weight: Float, color: Color = MaterialTheme.colorScheme.primary) {
-    Surface(
-        modifier = Modifier
-            .width(50.dp)
-            .height(100.dp)
-            .weight(weight),
-        color = color) {
-
+fun Greeting() {
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        Box(
+            modifier = Modifier
+                .background(Color.Blue),
+            contentAlignment = Alignment.Center
+//                .width(100.dp)
+//                .height(100.dp)
+//                .verticalScroll(rememberScrollState())
+        ) {
+            Box(modifier = Modifier.height(50.dp).width(50.dp).background(Color.Green))
+            Text(text = "I love Android", fontSize = 60.sp)
+        }
     }
 }
 
@@ -61,13 +64,6 @@ fun RowScope.CustomItem(weight: Float, color: Color = MaterialTheme.colorScheme.
 @Composable
 fun GreetingPreview() {
     Jetpackcomposessan1Theme {
-        Row(
-            modifier = Modifier.fillMaxSize(),
-            horizontalArrangement = Arrangement.Start,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            CustomItem(weight = 3f, color = MaterialTheme.colorScheme.secondary)
-            CustomItem(weight = 1f)
-        }
+        Greeting()
     }
 }
