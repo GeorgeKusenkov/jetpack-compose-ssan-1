@@ -51,9 +51,17 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             Jetpackcomposessan1Theme {
-                Surface(modifier = Modifier.fillMaxSize()) {
-                    Greeting()
-
+                Column(modifier = Modifier
+                    .fillMaxSize(),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+//                    Greeting()
+                    GoogleButton(
+                        text = "Sign Up wit Google",
+                        loadingText = "Creating Account...",
+                        onClicked = {Log.d("GoogleButton", "Clicked")}
+                    )
                 }
             }
         }
